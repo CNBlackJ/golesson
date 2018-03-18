@@ -7,8 +7,8 @@ import "net/http"
 import "github.com/gin-gonic/gin"
 
 type wifi struct {
-	id   int
-	name string
+	Id   int
+	Name string
 }
 
 type E struct {
@@ -23,20 +23,19 @@ type FOO struct {
 func listWifi(c *gin.Context) {
 	wifis := [...]wifi{
 		{
-			id:   1,
-			name: "tenda_wifi",
+			Id:   1,
+			Name: "tenda_wifi",
 		},
 		{
-			id:   2,
-			name: "xiaomi_wifi",
+			Id:   2,
+			Name: "xiaomi_wifi",
 		},
 	}
 
 	wifi := wifi{
-		id:   1,
-		name: "a",
+		Id:   1,
+		Name: "a",
 	}
-	fmt.Println(wifis)
 	c.JSON(200, gin.H{
 		"message": wifi,
 	})
