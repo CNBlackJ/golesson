@@ -1,9 +1,12 @@
-package Hello
+package hello
 
-import "github.com/gin-gonic/gin"
-import "strconv"
-import "fmt"
-import "time"
+import (
+	"time"
+	"fmt"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
 
 type News struct {
 	Id              string `json:"id"`
@@ -46,15 +49,15 @@ func Get(c *gin.Context) {
 	})
 }
 
-func List(c *gin.Context) {
-	limit := c.DefaultQuery("limit", 10)
-	skip := strconv.Atoi(c.Query("skip"))
-	c.JSON(200, gin.H{
-		"data": news,
-		"code": 200,
-		"serverTime": now,
-	})
-}
+// func List(c *gin.Context) {
+// 	limit := c.DefaultQuery("limit", 10)
+// 	skip := strconv.Atoi(c.Query("skip"))
+// 	c.JSON(200, gin.H{
+// 		"data": news,
+// 		"code": 200,
+// 		"serverTime": now,
+// 	})
+// }
 
 func Post(c *gin.Context) {
 	c.JSON(200, gin.H{

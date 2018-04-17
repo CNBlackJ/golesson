@@ -1,7 +1,11 @@
 package router
 
-import "github.com/gin-gonic/gin"
-import "golesson/controller"
+import (
+	"golesson/controller/hello"
+	"golesson/controller/graphql"
+	
+	"github.com/gin-gonic/gin"
+)
 
 var Router *gin.Engine
 
@@ -10,9 +14,12 @@ func init() {
 }
 
 func SetRouter() {
-	Router.GET("/news/:id", Hello.Get)
-	Router.GET("/news", Hello.List)
-	Router.POST("/news", Hello.Post)
-	Router.PUT("/news/:id", Hello.Put)
-	Router.DELETE("/news", Hello.Destroy)
+	Router.GET("/news/:id", hello.Get)
+	// Router.GET("/news", Hello.List)
+	Router.POST("/news", hello.Post)
+	Router.PUT("/news/:id", hello.Put)
+	Router.DELETE("/news", hello.Destroy)
+
+	Router.POST("/graphql", graphql.GraphqlHandler())
+	Router.GET("/graphql", graphql.GraphqlHandler())
 }
